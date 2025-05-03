@@ -1,0 +1,10 @@
+<!-- docs/_sidebar.md -->
+* [Home](/)
+* [Angular Components](angular-components.md)
+* [Dynamic Data in Component Templates](dynamic-data-in-component-templates.md)
+* [Component Communication](component-communication.md)
+* [Directives](directives.md)
+* [Dynamic Styles](dynamic-styles.md)
+* [Content Projection](content-projection.md)
+* [Pipes](pipes.md)
+* [Services](services.md)
