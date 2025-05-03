@@ -37,3 +37,11 @@ Projects content into specific slots using attribute selectors. `ngProjectAs` le
 ```
 
 This allows projecting elements into the correct slots without adding custom attributes like `card-title` or `card-body` directly to the DOM.
+
+You can also use CSS-style selectors to match multiple element types. For example:
+
+```html
+<ng-content select="input, textarea"></ng-content>
+```
+
+This will match both `<input>` and `<textarea>` elements in the projected content.
