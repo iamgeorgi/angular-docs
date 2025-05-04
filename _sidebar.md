@@ -2,6 +2,7 @@
 * [Home](/)
 * [Angular Components](angular-components.md)
 * [Dynamic Data in Component Templates](dynamic-data-in-component-templates.md)
+* [Lifecycle Hooks](lifecycle-hooks.md)
 * [Component Communication](component-communication.md)
 * [Directives](directives.md)
 * [Dynamic Styles](dynamic-styles.md)

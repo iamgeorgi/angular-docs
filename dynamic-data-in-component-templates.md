@@ -26,3 +26,31 @@ Synchronizes input field value with a component property.
 ```
 
 Make sure to import `FormsModule` in your module to use `ngModel`.
+
+## Template Reference Variables
+
+Template reference variables (`#var`) allow you to reference a DOM element or component instance directly in your template.
+
+### Example:
+```html
+<input name="title" id="title" #titleInput />
+<button (click)="logTitle(titleInput)">Log Title</button>
+```
+
+### Component Method:
+```ts
+logTitle(input: HTMLInputElement) {
+  console.log(input.value);
+}
+```
+
+You can use the reference to access properties like `.value`, call methods, or pass the element to component logic.
+
+---
+
+Template reference variables can also be used to access:
+- Angular components or directives
+- Template forms (e.g., `#form="ngForm"`)
+- DOM elements directly
+
+They’re only accessible **within the same template** where they’re declared.
