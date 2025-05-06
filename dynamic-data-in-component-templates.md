@@ -54,3 +54,66 @@ Template reference variables can also be used to access:
 - DOM elements directly
 
 They’re only accessible **within the same template** where they’re declared.
+
+## Custom Two-Way Binding
+
+Angular allows you to create your own two-way binding using a combination of `@Input()` and `@Output()` with the `[(binding)]` syntax in the parent.
+
+---
+
+### Traditional `@Input()` / `@Output()` Pattern
+
+#### Child Component
+```ts
+@Component({
+  selector: 'app-rect',
+  template: `<button (click)="onReset()">Reset</button>`
+})
+export class RectComponent {
+  @Input() size!: { width: string; height: string };
+  @Output() sizeChange = new EventEmitter<{ width: string; height: string }>();
+
+  onReset() {
+    this.sizeChange.emit({ width: '100', height: '100' });
+  }
+}
+```
+
+#### Parent Component Template
+```html
+<app-rect [(size)]="rectSize"></app-rect>
+```
+
+#### Parent Component Class
+```ts
+rectSize = { width: '200', height: '300' };
+```
+
+This enables two-way binding on the `size` input, so when the child emits a change, the parent is updated.
+
+---
+
+### Signals-Based Custom Two-Way Binding
+
+#### Child Component
+```ts
+import { Component, model } from '@angular/core';
+
+@Component({
+  selector: 'app-rect',
+  standalone: true,
+  template: `<button (click)="onReset()">Reset</button>`
+})
+export class RectComponent {
+  size = model<{ width: string; height: string }>();
+
+  onReset() {
+    this.size.set({ width: '100', height: '100' });
+  }
+}
+```
+
+This exposes `size` as a signal-enabled input/output pair that supports two-way binding automatically via `[(size)]`.
+
+No need for `@Input()` or `@Output()` — Angular wires it up based on the `model()` declaration.
+
